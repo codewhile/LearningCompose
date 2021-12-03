@@ -37,8 +37,14 @@ class MainActivity : ComponentActivity() {
         // Serve para definir o Layout da Activity
         setContent {
 
-            // Serve para definir um rótulo de texto na tela
-            MessageCard(Message("Marcus Vinicius", "Oi"))
+            // Aplicando tema do material design nos componentes
+            // O Material Design é baseado em trê características: Cor, Tipografia e forma
+            LearningComposeTheme {
+
+                // Serve para definir um rótulo de texto na tela
+                MessageCard(Message("Marcus Vinicius", "Oi"))
+
+            }
 
         }
 
@@ -61,6 +67,7 @@ fun MessageCard(msg: Message) {
             modifier = Modifier
                 .size(40.dp)
                 .clip(CircleShape)
+                .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
         )
 
         // Serve como uma caixa em branco que pode dar espaço entre as coisas.
