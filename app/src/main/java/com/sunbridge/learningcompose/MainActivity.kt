@@ -37,10 +37,25 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             // Serve para definir um rótulo de texto na tela
-            Text("Hello World")
+            MessageCard(name = "Android")
 
         }
 
     }
+}
+
+
+@Composable // Funções que são compostas recebem essa anotação
+fun MessageCard(name: String) {
+    Text("Hello $name")
+}
+
+
+/* Serve para visualizar na própria IDE o Layout das funções compostas, mas você só pode usar parâmetros que recebem valores padrão ou sem parâmetros.
+* Dessa forma, mesmo essa função não sendo chamada em lugar algum, o android studio cria uma janela de visualização que nos visualizar os elementos*/
+@Preview
+@Composable
+fun previewMessageCard() {
+    MessageCard(name = "Android")
 }
 
