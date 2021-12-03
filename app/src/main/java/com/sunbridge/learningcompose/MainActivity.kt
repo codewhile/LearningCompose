@@ -75,9 +75,9 @@ fun MessageCard(msg: Message) {
 
         // A função columm informa o compilador para organizar os elementos verticalmente.
         Column {
-            Text(msg.author, color = MaterialTheme.colors.secondaryVariant)
+            Text(msg.author, color = MaterialTheme.colors.secondaryVariant, style = MaterialTheme.typography.subtitle2)
             Spacer(modifier = Modifier.height(4.dp))
-            Text(msg.message)
+            Text(msg.message, style = MaterialTheme.typography.body2)
         }
 
     }
