@@ -21,6 +21,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,8 +50,32 @@ data class Message(val author:String, val message:String)
 
 @Composable // Funções que são compostas recebem essa anotação
 fun MessageCard(msg: Message) {
-    Text(msg.author)
-    Text(msg.message)
+
+    // Row serve para organizar horizontalmente um elemento.
+    // Moddificadores podem ser usados para decorar ou configurar um elemento(Tornar ele clicável)
+    Row(modifier = Modifier.padding(all = 8.dp)) {
+
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Contact profile picture",
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+        )
+
+        // Serve como uma caixa em branco que pode dar espaço entre as coisas.
+        Spacer(modifier = Modifier.width(8.dp))
+
+        // A função columm informa o compilador para organizar os elementos verticalmente.
+        Column {
+            Text(msg.author)
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(msg.message)
+        }
+
+    }
+
+
 }
 
 
