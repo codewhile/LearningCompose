@@ -77,7 +77,16 @@ fun MessageCard(msg: Message) {
         Column {
             Text(msg.author, color = MaterialTheme.colors.secondaryVariant, style = MaterialTheme.typography.subtitle2)
             Spacer(modifier = Modifier.height(4.dp))
-            Text(msg.message, style = MaterialTheme.typography.body2)
+
+            // Surface é uma caixa que vai dar uma destacada no que estiver dento dela
+            Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp) {
+                Text(
+                    msg.message,
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.padding(all = 4.dp)
+                )
+            }
+
         }
 
     }
