@@ -37,17 +37,20 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             // Serve para definir um rótulo de texto na tela
-            MessageCard(name = "Android")
+            MessageCard(Message("Marcus Vinicius", "Oi"))
 
         }
 
     }
 }
 
+data class Message(val author:String, val message:String)
+
 
 @Composable // Funções que são compostas recebem essa anotação
-fun MessageCard(name: String) {
-    Text("Hello $name")
+fun MessageCard(msg: Message) {
+    Text(msg.author)
+    Text(msg.message)
 }
 
 
@@ -56,6 +59,6 @@ fun MessageCard(name: String) {
 @Preview
 @Composable
 fun previewMessageCard() {
-    MessageCard(name = "Android")
+    MessageCard(Message("Vinicius", "Take a look at Jetpack Compose, it's great"))
 }
 
