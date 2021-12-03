@@ -97,7 +97,12 @@ fun MessageCard(msg: Message) {
 
 /* Serve para visualizar na própria IDE o Layout das funções compostas, mas você só pode usar parâmetros que recebem valores padrão ou sem parâmetros.
 * Dessa forma, mesmo essa função não sendo chamada em lugar algum, o android studio cria uma janela de visualização que nos visualizar os elementos*/
-@Preview
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "Dark Mode",
+    showBackground = true,
+)
 @Composable
 fun previewMessageCard() {
     MessageCard(Message("Vinicius", "Take a look at Jetpack Compose, it's great"))
