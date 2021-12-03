@@ -85,8 +85,14 @@ fun MessageCard(msg: Message) {
         // Serve como uma caixa em branco que pode dar espaço entre as coisas.
         Spacer(modifier = Modifier.width(8.dp))
 
+        //  Serve para fazer um processo conhecido como recomposição.
+        //  Os elementos que possuem o estado e os filhos deles serão redesenhados.
+        var isExpanded by remember() {
+            mutableStateOf(false)
+        }
+
         // A função columm informa o compilador para organizar os elementos verticalmente.
-        Column {
+        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(msg.author, color = MaterialTheme.colors.secondaryVariant, style = MaterialTheme.typography.subtitle2)
             Spacer(modifier = Modifier.height(4.dp))
 
@@ -95,7 +101,8 @@ fun MessageCard(msg: Message) {
                 Text(
                     msg.message,
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.padding(all = 4.dp)
+                    modifier = Modifier.padding(all = 4.dp),
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 1
                 )
             }
 
