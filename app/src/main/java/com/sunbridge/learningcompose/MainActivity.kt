@@ -33,7 +33,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Serve para definir o Layout da Activity
+        setContent {
 
+            // Serve para definir um rótulo de texto na tela
+            Text("Hello World")
+
+        }
 
     }
 }
+
