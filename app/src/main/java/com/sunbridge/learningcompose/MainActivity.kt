@@ -42,7 +42,9 @@ class MainActivity : ComponentActivity() {
             LearningComposeTheme {
 
                 // Serve para definir um rótulo de texto na tela
-                MessageCard(Message("Marcus Vinicius", "Oi"))
+                //MessageCard(Message("Marcus Vinicius", "Oi"))
+
+                Conversation(MessageRepository.conversationSample)
 
             }
 
@@ -52,6 +54,16 @@ class MainActivity : ComponentActivity() {
 }
 
 data class Message(val author:String, val message:String)
+
+@Composable
+fun Conversation(messages:List<Message>) {
+
+    LazyColumn {
+        items(messages) { message ->
+            MessageCard(message)
+        }
+    }
+}
 
 
 @Composable // Funções que são compostas recebem essa anotação
@@ -94,6 +106,11 @@ fun MessageCard(msg: Message) {
 
 }
 
+@Preview(name = "Sample Conversation")
+@Composable
+fun PreviewConversation() {
+    Conversation(messages = MessageRepository.conversationSample)
+}
 
 /* Serve para visualizar na própria IDE o Layout das funções compostas, mas você só pode usar parâmetros que recebem valores padrão ou sem parâmetros.
 * Dessa forma, mesmo essa função não sendo chamada em lugar algum, o android studio cria uma janela de visualização que nos visualizar os elementos*/
